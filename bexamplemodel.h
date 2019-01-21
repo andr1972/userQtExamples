@@ -1,0 +1,68 @@
+/* The MIT License (MIT)
+ * Based on sample https://github.com/jcb9000/qjtree
+*/
+
+#pragma once
+
+#include <QString>
+#include <QAbstractItemModel>
+#include <QFileIconProvider>
+
+/**
+ * @brief The BExampleModel class
+ *
+ * An implementation of the QAbstractItemModel class. This class re-implements
+ * the necessary virtual functions to display and edit model elements in a QTreeView.
+ *
+ */
+class BExampleModel : public QAbstractItemModel
+{
+  Q_OBJECT
+    struct TreeNode {
+      TreeNode          *parent;
+      QList<TreeNode *>  children;
+      QString            key;
+      QString            value;
+      TreeNode(TreeNode *p, const QString &k, const QString &d) : parent(p), key(k), value(d) {}
+      ~TreeNode() {}
+
+      /**
+       * @brief row
+       *
+       * @return Returns an integer corresponding to the row of this node under its
+       * parent. For the root of the tree, the row count is always 0.
+       */
+      int row() const {
+
+        if(parent != nullptr)
+          return parent->children.indexOf(const_cast<TreeNode *>(this));
+        return 0;
+      }
+    };
+private:
+  bool           modified;
+  TreeNode      *root;
+  std::string indent(int level);
+  void freeTraverse(TreeNode *node);
+  QFileIconProvider iconProvider;
+public:
+  explicit BExampleModel(QObject *parent = nullptr);
+  virtual ~BExampleModel() override;
+
+  bool isModified();
+  void resetModified();
+  // Header:
+  QVariant headerData(int section, Qt::Orientation orientation, int role = Qt::DisplayRole) const override;
+
+  // Basic functionality:
+  QModelIndex index(int row, int column, const QModelIndex &parent = QModelIndex()) const override;
+  QModelIndex parent(const QModelIndex &index) const override;
+
+  int rowCount(const QModelIndex &parent = QModelIndex()) const override;
+  int columnCount(const QModelIndex &parent = QModelIndex()) const override;
+
+  QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
+  bool setData(const QModelIndex &index, const QVariant &value, int role = Qt::EditRole) override;
+
+  Qt::ItemFlags flags(const QModelIndex& index) const override;
+};
