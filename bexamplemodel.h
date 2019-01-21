@@ -9,8 +9,6 @@
 #include <QFileIconProvider>
 
 /**
- * @brief The BExampleModel class
- *
  * An implementation of the QAbstractItemModel class. This class re-implements
  * the necessary virtual functions to display and edit model elements in a QTreeView.
  *
@@ -27,8 +25,6 @@ class BExampleModel : public QAbstractItemModel
       ~TreeNode() {}
 
       /**
-       * @brief row
-       *
        * @return Returns an integer corresponding to the row of this node under its
        * parent. For the root of the tree, the row count is always 0.
        */

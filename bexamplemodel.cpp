@@ -10,7 +10,6 @@ The MIT License (MIT)
 #include "BExampleModel.h"
 
 /**
- * @brief BExampleModel::BExampleModel
  * @param parent: QObject parent for this object
  *
  * Init small tree
@@ -28,8 +27,6 @@ BExampleModel::BExampleModel(QObject *parent) : QAbstractItemModel(parent)
 }
 
 /**
- * @brief BExampleModel::~BExampleModel
- *
  * If a root document was allocated, it is deleted.
  *
  */
@@ -53,8 +50,6 @@ void BExampleModel::resetModified()
 }
 
 /**
- * @brief BExampleModel::freeTraverse
- *
  * Performs a traversal of the tree starting from the given node.
  * This function is used by the destructor to delete the document tree.
  *
@@ -73,8 +68,6 @@ void BExampleModel::freeTraverse(TreeNode *node)
 
 
 /**
- * @brief BExampleModel::headerData
- *
  * Provide text for the two headers in the Qt tree view.
  * @note the check for Qt::DisplayRole is required otherwise nothing is displayed.
  *
@@ -99,8 +92,6 @@ QVariant BExampleModel::headerData(int section, Qt::Orientation orientation, int
 
 
 /**
- * @brief BExampleModel::index
- *
  * This function maps from the Qt abstract model row/column to the model's
  * concept of row/column.
  *
@@ -137,8 +128,6 @@ QModelIndex BExampleModel::index(int row, int column, const QModelIndex &parent)
 
 
 /**
- * @brief BExampleModel::parent
- *
  * Similar to index(), this function receives a QModelIndex and returns
  * an index for its parent.
  *
@@ -164,8 +153,6 @@ QModelIndex BExampleModel::parent(const QModelIndex &index) const
 
 
 /**
- * @brief BExampleModel::rowCount
- *
  * Returns the number of rows (children) under the parent index.
  *
  * @param parent: Index of the parent item
@@ -187,8 +174,6 @@ int BExampleModel::rowCount(const QModelIndex &parent) const
 
 
 /**
- * @brief BExampleModel::columnCount
- *
  * Returns the number of columns under the parent index.
  *
  * @param parent: Index of the parent item
@@ -205,8 +190,6 @@ int BExampleModel::columnCount(const QModelIndex &parent) const
 
 
 /**
- * @brief BExampleModel::data
- *
  * Returns a variant holding the data at the given model index.
  *
  * @param index: The index for which to return data
@@ -247,8 +230,6 @@ QVariant BExampleModel::data(const QModelIndex &index, int role) const
 
 
 /**
- * @brief BExampleModel::setData
- *
  * Called by Qt when the user edits an item in the tree view. Either the
  * key (column 0) or the value (column 1) has been changed.
  *
@@ -299,8 +280,6 @@ bool BExampleModel::setData(const QModelIndex &index, const QVariant &value, int
 
 
 /**
- * @brief BExampleModel::flags
- *
  * Returns flags for the item at the given model index.
  * An index corresponding to the key of an array item (column 0, empty key)
  * is enabled and selectable but cannot be edited.
