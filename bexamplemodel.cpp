@@ -7,7 +7,7 @@ The MIT License (MIT)
 #include <QByteArray>
 #include <QImage>
 #include <QIcon>
-#include "BExampleModel.h"
+#include "bexamplemodel.h"
 
 /**
  * @param parent: QObject parent for this object
