@@ -21,11 +21,13 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         dialog.cpp \
-    bexamplemodel.cpp
+    bexamplemodel.cpp \
+    blazycachedmodel.cpp
 
 HEADERS += \
         dialog.h \
-    bexamplemodel.h
+    bexamplemodel.h \
+    blazycachedmodel.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
