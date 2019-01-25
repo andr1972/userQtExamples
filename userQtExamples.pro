@@ -22,12 +22,14 @@ SOURCES += \
         main.cpp \
         dialog.cpp \
     bexamplemodel.cpp \
-    blazycachedmodel.cpp
+    blazycachedmodel.cpp \
+    bdirmodel.cpp
 
 HEADERS += \
         dialog.h \
     bexamplemodel.h \
-    blazycachedmodel.h
+    blazycachedmodel.h \
+    bdirmodel.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
