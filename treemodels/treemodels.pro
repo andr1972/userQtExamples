@@ -2,7 +2,7 @@ QT       += core gui
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
-TARGET = test
+TARGET = treemodels
 TEMPLATE = app
 
 # The following define makes your compiler emit warnings if you use
@@ -21,15 +21,15 @@ CONFIG += c++11
 SOURCES += \
         main.cpp \
         dialog.cpp \
-    bexamplemodel.cpp \
-    blazycachedmodel.cpp \
-    bdirmodel.cpp
+    ../bexamplemodel.cpp \
+    ../blazycachedmodel.cpp \
+    ../bdirmodel.cpp
 
 HEADERS += \
         dialog.h \
-    bexamplemodel.h \
-    blazycachedmodel.h \
-    bdirmodel.h
+    ../bexamplemodel.h \
+    ../blazycachedmodel.h \
+    ../bdirmodel.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

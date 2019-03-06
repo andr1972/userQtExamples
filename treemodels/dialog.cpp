@@ -1,7 +1,7 @@
 #include "dialog.h"
-#include "bexamplemodel.h"
-#include "blazycachedmodel.h"
-#include "bdirmodel.h"
+#include "../bexamplemodel.h"
+#include "../blazycachedmodel.h"
+#include "../bdirmodel.h"
 #include <QSplitter>
 #include <QPushButton>
 #include <QTreeView>

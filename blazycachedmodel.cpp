@@ -189,7 +189,6 @@ int BLazyCachedModel::columnCount(const QModelIndex &parent) const
 
 QVariant BLazyCachedModel::data(const QModelIndex &index, int role) const
 {
-
   if(!index.isValid())
     return QVariant();
 
