@@ -23,10 +23,7 @@ QVariant BTableModel::headerData(int section, Qt::Orientation orientation, int r
       return QVariant();
   if (orientation==Qt::Orientation::Horizontal)
   {
-      if(section == 0)
-        return QVariant(QString("Level"));
-      else
-        return QVariant(QString("Index"));
+      return QVariant(headerList[section]);
   }
   else
     return QString::number(section);
@@ -43,15 +40,14 @@ QModelIndex BTableModel::index(int row, int column, const QModelIndex &parent) c
 
 int BTableModel::rowCount(const QModelIndex &parent) const
 {
-    return 5;
+    return variantableList.count();
 }
 
 
 int BTableModel::columnCount(const QModelIndex &parent) const
 {
   Q_UNUSED(parent)
-  // Two columns: Key, and Value.
-  return 2;
+  return headerList.count();
 }
 
 QVariant BTableModel::data(const QModelIndex &index, int role) const
@@ -62,14 +58,7 @@ QVariant BTableModel::data(const QModelIndex &index, int role) const
     if(role != Qt::DisplayRole)
       return QVariant();
 
-    if(index.column() == 0)
-    {
-        return "level_"+QString::number(index.row());
-    }
-    else
-    {
-        return "index_"+QString::number(index.row());
-    }
+    return variantableList[index.row()]->getData(index.column());
 }
 
 /**
@@ -90,3 +79,8 @@ Qt::ItemFlags BTableModel::flags(const QModelIndex &index) const
   return Qt::ItemIsEnabled | Qt::ItemIsSelectable;
 }
 
+void BTableModel::setList(QList<IVariantable*> &variantableList, QStringList &headerList)
+{
+    this->variantableList = variantableList;
+    this->headerList = headerList;
+}

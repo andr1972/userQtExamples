@@ -27,7 +27,8 @@ SOURCES += \
 HEADERS += \
         dialog.h \
     ../blazycachedmodel.h \
-    ../btablemodel.h
+    ../btablemodel.h \
+    ../ivariantable.h
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

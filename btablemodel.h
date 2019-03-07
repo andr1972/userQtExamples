@@ -6,11 +6,14 @@
 
 #include <QString>
 #include <QAbstractTableModel>
+#include "ivariantable.h"
 
 class BTableModel : public QAbstractTableModel
 {
   Q_OBJECT    
 private:  
+  QList<IVariantable*> variantableList;
+  QStringList headerList;
 public:
   explicit BTableModel(QObject *parent);
   virtual ~BTableModel() override;
@@ -25,4 +28,6 @@ public:
 
   QVariant data(const QModelIndex &index, int role = Qt::DisplayRole) const override;
   Qt::ItemFlags flags(const QModelIndex& index) const override;
+
+  void setList(QList<IVariantable*> &variantableList, QStringList &headerList);
 };
